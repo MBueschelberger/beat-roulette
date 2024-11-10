@@ -1,0 +1,7 @@
+services:
+  web:
+    build: .
+    image: beat-roulette:latest
+    ports:
+      - "4200:4200"
+

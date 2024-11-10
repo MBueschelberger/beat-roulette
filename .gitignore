@@ -1,0 +1,60 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Node modules
+node_modules/
+
+# Compiled output
+dist/
+out-tsc/
+build/
+
+# Dependency directories
+jspm_packages/
+
+# TypeScript files
+*.tsbuildinfo
+
+# Angular build artifacts and assets
+.angular/cache
+.angular/
+
+# IDE-specific files
+.idea/
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+.env.*.local
+
+# Temporary files
+.tmp/
+temp/
+
+# Coverage directory
+coverage/
+
+# Miscellaneous
+*.bak
+*.swp
+*~
+.project
+.classpath
+
+# Compiled JavaScript files (optional, if generated alongside TypeScript files)
+*.js.map
+
+# Misc artifacts
+!src/assets/   # Keep assets directory under version control if required
+
+18.2.5/

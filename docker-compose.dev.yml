@@ -1,0 +1,7 @@
+services:
+  web:
+    volumes:
+      - .:/app
+    entrypoint: /bin/bash
+    tty: True
+
