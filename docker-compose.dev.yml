@@ -1,7 +1,13 @@
 services:
   web:
     volumes:
-      - .:/app
+      - ./frontend:/app
+    entrypoint: /bin/bash
+    tty: True
+
+  api:
+    volumes:
+      - ./backend:/app
     entrypoint: /bin/bash
     tty: True
 
