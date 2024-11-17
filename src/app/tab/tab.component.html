@@ -1,22 +1,37 @@
-<button (click)="playPause()">Play/Pause</button>
-<label class="checkbox">
-    <input (change)="useMetronome()" type="checkbox" />
-    Enable Metronome
-</label>
-<label class="checkbox">
-    <input (change)="useLoop()" type="checkbox" />
-    Enable Loop
-</label>
-<div class="slider">
-    <input
-        (input)="setSpeed($event)"
-        type="range"
-        min="1"
-        max="250"
-        step="1"
-        value="100"
-    />
-    <p>BPM: {{ speedSliderValue }}</p>
+<div #alphaTabContainer class="at-wrap">    
+    <div class="at-content">
+        <div class="at-viewport">
+            <div #alphaTab></div>
+        </div>
+    </div>
+    <div class="at-controls">
+        <label class="btn">
+            <button (click)="playPause()">
+                Play/Pause
+            </button>
+        </label>
+        <label class="checkbox">
+            <input (change)="useMetronome()" type="checkbox" />
+            Enable Metronome
+        </label>
+        <label class="checkbox">
+            <input (change)="useCountIn()" type="checkbox" />
+            Count In
+        </label>
+        <label class="checkbox">
+            <input (change)="useLoop()" type="checkbox" />
+            Enable Loop
+        </label>
+        <div class="slider">
+            <input
+                (input)="setSpeed($event)"
+                type="range"
+                min="1"
+                max="250"
+                step="1"
+                value="100"
+            />
+            <p>BPM: {{ speedSliderValue }}</p>
+        </div>
+    </div>
 </div>
-
-<div #alphaTab></div>

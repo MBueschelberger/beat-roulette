@@ -1,4 +1,12 @@
-<div>
-  <button (click)="changeTabFile()">Load Random Tab</button>  
-  <tab [tabInput]="selectedTabFile"></tab>
+<div class="container">
+  <div class="columns is-centered">
+    <div class="box column is-one-third">
+      <h1 class="title has-text-centered">Beat Roulette</h1>
+        <button (click)="changeTabFile()" class="button is-link is-fullwidth">
+          Load Random Exercise
+        </button>  
+    </div>
+  </div>
 </div>
+
+<tab [tabInput]="selectedTabFile"></tab>

@@ -18,6 +18,7 @@ export class TabComponent implements AfterViewInit, OnChanges, OnDestroy  {
 
   metronomeEnabled: boolean = false;
   loopEnabled: boolean = false;
+  countInEnabled: boolean = false;
   speedSliderValue: number | null = null;
   orgSpeed: number | null = null;
   title = 'alphatab-app';
@@ -40,6 +41,15 @@ export class TabComponent implements AfterViewInit, OnChanges, OnDestroy  {
     this.#alphaTab.metronomeVolume = this.metronomeEnabled ? 1 : 0;
   }
 
+  useCountIn() {
+    this.countInEnabled = !this.countInEnabled;
+    this.#alphaTab.countInVolume = this.countInEnabled ? 1 : 0;
+  }
+
+  useLoop() {
+    this.loopEnabled = !this.loopEnabled;
+    this.#alphaTab.isLooping = this.loopEnabled;
+  }
 
   setSpeed(event: Event): void {
     const target = event.target as HTMLInputElement;
@@ -49,13 +59,8 @@ export class TabComponent implements AfterViewInit, OnChanges, OnDestroy  {
       this.speedSliderValue = value;
       this.#alphaTab.playbackSpeed = value / this.orgSpeed!;
     }
-
   }
 
-  useLoop() {
-    this.loopEnabled = !this.loopEnabled;
-    this.#alphaTab.isLooping = this.loopEnabled;
-  }
 
   ngOnChanges(changes: SimpleChanges): void {
     if (changes['tabInput'] && !changes['tabInput'].firstChange) {
@@ -87,6 +92,7 @@ export class TabComponent implements AfterViewInit, OnChanges, OnDestroy  {
       }
     } as alphaTab.Settings);
     this.#alphaTab.metronomeVolume = this.metronomeEnabled ? 1 : 0;
+    this.#alphaTab.countInVolume = this.countInEnabled ? 1 : 0;
     this.#alphaTab.isLooping = this.loopEnabled;
     this.#alphaTab.scoreLoaded.on((score: any) => {
       this.speedSliderValue = score.tempo;
