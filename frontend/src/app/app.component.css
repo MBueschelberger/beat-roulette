@@ -6,3 +6,9 @@
 .title {
     color: #000000;
 }
+
+.button {
+    background-color: #0078ff;
+    color: #ffffff;
+    font-weight: bold;
+}

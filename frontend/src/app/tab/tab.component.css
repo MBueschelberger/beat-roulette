@@ -1,174 +1,40 @@
 body {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 12px;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 5%;
   background-color: #ffffff;
 }
 
+.play-button {
+  margin-bottom: 1rem;
+}
+
+.play-button .btn,
+.collapse-button .btn {
+  padding: 0.5rem 1rem;
+  background-color: #0078ff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+.play-button .btn:hover,
+.collapse-button .btn:hover {
+  background-color: #508cc0;
+}
 
 .at-cursor-beat {
     background: rgba(64, 64, 255, 0.75);
     width: 3px;
 }
 
-.at-wrap {
-  width: 80vw;
-  height: 80vh;
-  margin: 0 auto;
-  border: 1px solid rgba(0, 0, 0, 0.12);
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-  position: relative;
-}
-
-.at-content {
-  position: relative;
-  overflow: hidden;
-  flex: 1 1 auto;
-}
-
-
-.at-viewport {
-  overflow-y: auto;
-  position: absolute;
-  top: 0;
-  left: 70px;
-  right: 0;
-  bottom: 0;
-  padding-right: 20px;
-}
-
 .at-footer {
   flex: 0 0 auto;
   background: #436d9d;
   color: #fff;
-}
-
-/** Footer **/
-.at-controls {
-  flex: 0 0 auto;
-  display: flex;
-  justify-content: space-between;
-  background: #436d9d;
-  color: #fff;
-}
-
-.at-controls > div {
-  display: flex;
-  justify-content: flex-start;
-  align-content: center;
-  align-items: center;
-  }
-
-.at-controls > div > * {
-  display: flex;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  padding: 10px;
-  margin: 0 3px;
-}
-
-.at-controls .btn {
-  background-color: #64a4e9;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  transition: background-color 0.3s, transform 0.2s;
-}
-
-.at-controls .btn:hover {  
-  background-color: #708eab;
-  transform: translateY(0);  
-}
-
-
-checkbox {
-  display: flex;
-  align-items: center;
-  font-size: 14px;
-}
-
-.checkbox input {
-  margin-right: 5px;
-  margin-top: 15px;
-  cursor: pointer;
-}
-
-/* Slider styling */
-.slider {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-}
-
-.slider input[type="range"] {
-  flex: 1;
-  width: 100%;
-  height: 8px;
-  background: #ddd;
-  border-radius: 5px;
-  outline: none;
-  transition: background 0.2s;
-}
-
-.slider input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  width: 15px;
-  height: 15px;
-  background-color: #007bff;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.slider input[type="range"]::-moz-range-thumb {
-  width: 15px;
-  height: 15px;
-  background-color: #007bff;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.slider input[type="range"]:hover::-webkit-slider-thumb,
-.slider input[type="range"]:hover::-moz-range-thumb {
-  background-color: #0056b3;
-}
-
-/* BPM display styling */
-.slider p {
-  font-size: 16px;
-  font-weight: bold;
-  width: 150px;
-  margin: 0;
-}
-
-.at-controls select {
-  -moz-appearance: none;
-  -webkit-appearance: none;
-  appearance: none;
-  border: none;
-  width: 100%;
-  height: 40px;
-  background: #436d9d;
-  padding: 4px 10px;
-  color: #fff;
-  font-size: 16px;
-  text-align-last: center;
-  text-align: center;
-  -ms-text-align-last: center;
-  -moz-text-align-last: center;
-  cursor: pointer;
-}
-
-.at-song-title {
-  font-weight: bold;
 }
 
 .at-cursor-bar {
@@ -181,6 +47,15 @@ checkbox {
   background: rgba(64, 64, 255, 0.1);
 }
 
+.at-song-info p {
+/* Defines the color of the song title */
+  color: black;
+  font-weight: bold;
+  text-align: center;
+  margin: 10px 0;
+  font-size: 1.5rem;
+}
+
 .at-cursor-beat {
 /* Defines the beat cursor */
   background: rgba(64, 64, 255, 0.75);
@@ -191,4 +66,144 @@ checkbox {
 /* Defines the color of the music symbols when they are being played (svg) */
   fill: #0078ff;
   stroke: #0078ff;
+}
+
+.at-controls {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center; /* Align items vertically */
+  gap: 20px; /* Add space between groups */
+  flex-wrap: wrap; /* Allow items to wrap on smaller screens */
+  justify-content: space-between; /* Spread groups across the container */
+  background: transparent;
+  color: #fff;
+  padding: 1rem; /* Add padding for better spacing */
+  box-sizing: border-box; /* Include padding in width calculation */
+  flex-direction: column;
+  margin: 20px;
+}
+
+/* Child div styling inside .at-controls */
+.at-controls > div {
+  display: flex;
+  flex-direction: row; /* Ensure items are in a row */
+  align-items: center; /* Align items vertically */
+  gap: 10px; /* Add space between items */
+  box-sizing: border-box; /* Include padding in width calculation */
+}
+
+/* Align buttons and checkboxes consistently */
+.at-controls label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+}
+
+.at-controls .checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: black;
+  gap: 8px; /* Add spacing between the checkbox and text */
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  margin: 0; /* Remove any margin that may cause misalignment */
+}
+
+.at-controls button {
+  background: #0078ff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 1rem;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+/* Ensure consistent size for checkboxes */
+.at-controls .checkbox input {
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  cursor: pointer;
+}
+
+/* BPM display */
+.at-controls p {
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: bold;
+  text-align: center;
+  align-items: center;
+  margin: 0;
+  color: black;
+  width: 150px;
+}
+
+/* Collapsible Button */
+.collapse-btn {
+  background-color: #64a4e9;
+  color: white;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-bottom: 10px;
+}
+
+.collapse-btn:hover {
+  background-color: #436d9d;
+}
+
+/* Collapsible Content */
+.collapsible-content {
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+  background-color: #f9f9f9;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.metronome-settings, .speed-settings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+
+/* Adjust for smaller screens */
+@media (max-width: 600px) {
+  .at-controls {
+    flex-direction: column; /* Stack items vertically */
+    align-items: center; /* Center-align items */
+    gap: 15px; /* Increase spacing for clarity */
+  }
+
+  .at-controls > div {
+    flex-direction: column; /* Stack groups vertically */
+    width: 100%; /* Ensure full width */
+    align-items: center; /* Center-align content */
+  }
+
+  .at-controls .btn {
+    width: 100%; /* Make buttons full width */
+  }
+
+  button {
+    width: 80%; /* Make buttons occupy more space */
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 14px;
+  }
+
+  input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+  }
 }

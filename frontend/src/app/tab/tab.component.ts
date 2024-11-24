@@ -1,10 +1,12 @@
 import { Component, AfterViewInit, ViewEncapsulation, Input, ElementRef, ViewChild, OnChanges, SimpleChanges, OnDestroy } from '@angular/core';
 import * as alphaTab from '@coderline/alphatab';
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'tab',
   templateUrl: './tab.component.html',
   standalone: true,
+  imports: [NgIf],
   styleUrls: ['./tab.component.css'],
   encapsulation: ViewEncapsulation.None
 })
@@ -16,12 +18,18 @@ export class TabComponent implements AfterViewInit, OnChanges, OnDestroy  {
   #alphaTab!: alphaTab.AlphaTabApi;
   @ViewChild('alphaTab') alphaTabElement!: ElementRef<HTMLDivElement>
 
+  controlsVisible: boolean = false;
   metronomeEnabled: boolean = false;
   loopEnabled: boolean = false;
   countInEnabled: boolean = false;
   speedSliderValue: number | null = null;
   orgSpeed: number | null = null;
+  songTitle: string = '';
   title = 'alphatab-app';
+
+  toggleControlsVisibility(): void {
+    this.controlsVisible = !this.controlsVisible;
+  }
 
   ngAfterViewInit(): void {
     this.initializeAlphaTab();
@@ -34,7 +42,6 @@ export class TabComponent implements AfterViewInit, OnChanges, OnDestroy  {
   ngOnDestroy(): void {
     this.#alphaTab.destroy();
   }
-
 
   useMetronome() {
     this.metronomeEnabled = !this.metronomeEnabled;
@@ -59,6 +66,14 @@ export class TabComponent implements AfterViewInit, OnChanges, OnDestroy  {
       this.speedSliderValue = value;
       this.#alphaTab.playbackSpeed = value / this.orgSpeed!;
     }
+  }
+
+  changeSpeed(value: number) {
+    if (this.speedSliderValue === null) {
+      this.speedSliderValue = this.orgSpeed!;
+    }
+    this.speedSliderValue += value;
+    this.#alphaTab.playbackSpeed = this.speedSliderValue / this.orgSpeed!;
   }
 
 
@@ -97,6 +112,8 @@ export class TabComponent implements AfterViewInit, OnChanges, OnDestroy  {
     this.#alphaTab.scoreLoaded.on((score: any) => {
       this.speedSliderValue = score.tempo;
       this.orgSpeed = score.tempo;
+      this.songTitle = score.title;
+      score.title = "";
     });
   }
 }
