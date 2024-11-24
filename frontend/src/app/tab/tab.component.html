@@ -1,37 +1,57 @@
-<div #alphaTabContainer class="at-wrap">    
-    <div class="at-content">
-        <div class="at-viewport">
-            <div #alphaTab></div>
+<div #alphaTabContainer class="at-wrap">
+    <div class="at-song-info">
+        <p>Current Exercise: <br>{{songTitle}}</p>
+    </div>
+
+
+    <!-- Collapsible Controls -->
+    <div class="at-controls">
+        <div class="play-button">
+            <button (click)="playPause()" class="btn">Play/Pause</button>
+        </div>
+
+        <!-- Collapse Button -->
+        <div class="collapse-button">
+            <button (click)="toggleControlsVisibility()" class="btn">
+                {{ controlsVisible ? 'Hide Controls' : 'Show Controls' }}
+            </button>
+        </div>
+
+        <div *ngIf="controlsVisible" class="collapsible-content">
+            <div class="metronome-settings">
+                <label class="checkbox">
+                    <input (change)="useMetronome()" type="checkbox" /> Enable Metronome
+                </label>
+                <label class="checkbox">
+                    <input (change)="useCountIn()" type="checkbox" /> Count In
+                </label>
+                <label class="checkbox">
+                    <input (change)="useLoop()" type="checkbox" /> Enable Loop
+                </label>
+            </div>
+            <div class="speed-settings">
+                <label class="btn">
+                    <button (click)="changeSpeed(-5)">-5</button>
+                </label>
+                <label class="btn">
+                    <button (click)="changeSpeed(-1)">-1</button>
+                </label>
+                <div>
+                    <p>BPM: {{ speedSliderValue }}</p>
+                </div>
+                <label class="btn">
+                    <button (click)="changeSpeed(1)">+1</button>
+                </label>
+                <label class="btn">
+                    <button (click)="changeSpeed(5)">+5</button>
+                </label>
+            </div>
         </div>
     </div>
-    <div class="at-controls">
-        <label class="btn">
-            <button (click)="playPause()">
-                Play/Pause
-            </button>
-        </label>
-        <label class="checkbox">
-            <input (change)="useMetronome()" type="checkbox" />
-            Enable Metronome
-        </label>
-        <label class="checkbox">
-            <input (change)="useCountIn()" type="checkbox" />
-            Count In
-        </label>
-        <label class="checkbox">
-            <input (change)="useLoop()" type="checkbox" />
-            Enable Loop
-        </label>
-        <div class="slider">
-            <input
-                (input)="setSpeed($event)"
-                type="range"
-                min="1"
-                max="250"
-                step="1"
-                value="100"
-            />
-            <p>BPM: {{ speedSliderValue }}</p>
+
+    <div class="at-content">
+        <div class="at-viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+            <div #alphaTab></div>
         </div>
     </div>
 </div>
