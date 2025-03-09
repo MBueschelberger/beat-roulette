@@ -63,7 +63,8 @@
         "serve": {
           "builder": "@angular-builders/custom-webpack:dev-server",
           "options": {
-            "buildTarget": "beat-roulette:build"
+            "buildTarget": "beat-roulette:build",
+            "liveReload": false
           },
           "configurations": {
             "production": {

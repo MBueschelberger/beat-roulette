@@ -2,9 +2,13 @@
   <div class="columns is-centered">
     <div class="box column is-one-third">
       <h1 class="title has-text-centered">Beat Roulette</h1>
-        <button (click)="changeTabFile()" class="button is-link is-fullwidth">
-          Load Random Exercise
-        </button>  
+      <button (click)="changeTabFile()" class="button is-link is-fullwidth">
+        Load Random Exercise
+      </button>
+      <h2 for="dropdown" class="title has-text-centered">Or select an exercise:</h2>
+      <select id="dropdown" class="select is-medium" [(ngModel)]="selectedTabFile" (change)="onSelectionChange($event)">
+        <option *ngFor="let option of files" [value]="option">{{ option }}</option>
+      </select>
     </div>
   </div>
 </div>

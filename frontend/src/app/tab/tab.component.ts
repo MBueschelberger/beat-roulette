@@ -24,6 +24,7 @@ export class TabComponent implements AfterViewInit, OnChanges, OnDestroy  {
   countInEnabled: boolean = false;
   speedSliderValue: number | null = null;
   orgSpeed: number | null = null;
+  followCursorEnabled: boolean = true;
   songTitle: string = '';
   title = 'alphatab-app';
 
@@ -37,6 +38,15 @@ export class TabComponent implements AfterViewInit, OnChanges, OnDestroy  {
 
   playPause() {
     this.#alphaTab.playPause();
+  }
+
+  followCursor() {
+    this.followCursorEnabled = !this.followCursorEnabled;
+    if (this.followCursorEnabled === true) {
+      this.#alphaTab.settings.player.scrollMode = 2;
+    } else {
+      this.#alphaTab.settings.player.scrollMode = 0;
+    }
   }
 
   ngOnDestroy(): void {
@@ -103,7 +113,12 @@ export class TabComponent implements AfterViewInit, OnChanges, OnDestroy  {
         enablePlayer: true,
         enableCursor: true,
         enableUserInteraction: true,
-        soundFont: this.soundFontInput
+        soundFont: this.soundFontInput,
+        scrollSpeed: 3000,
+      },
+      display: {
+        barsPerRow: 2,
+        stretchForce: 1,
       }
     } as alphaTab.Settings);
     this.#alphaTab.metronomeVolume = this.metronomeEnabled ? 1 : 0;
